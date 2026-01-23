@@ -2,6 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface Admin {
   id: string;
@@ -100,131 +104,120 @@ export default function AdminUsersPage() {
     <div>
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Admin Users</h1>
-        <button
-          onClick={() => setShowForm(!showForm)}
-          className="bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-2 px-4 rounded transition-colors"
-        >
+        <Button onClick={() => setShowForm(!showForm)}>
           {showForm ? 'Cancel' : 'Add Admin'}
-        </button>
+        </Button>
       </div>
 
       {showForm && (
-        <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-bold mb-4">Add New Admin</h2>
-          <form onSubmit={handleCreateAdmin} className="space-y-4 max-w-md">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                required
-                className="w-full px-4 py-2 bg-[var(--background)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-                required
-                className="w-full px-4 py-2 bg-[var(--background)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium mb-2">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                required
-                minLength={6}
-                className="w-full px-4 py-2 bg-[var(--background)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
-              />
-            </div>
-
-            {formError && (
-              <div className="bg-red-500/20 border border-red-500/50 text-red-400 px-4 py-3 rounded text-sm">
-                {formError}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Add New Admin</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleCreateAdmin} className="space-y-4 max-w-md">
+              <div className="space-y-2">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  type="text"
+                  id="name"
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  required
+                />
               </div>
-            )}
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  type="email"
+                  id="email"
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  type="password"
+                  id="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  required
+                  minLength={6}
+                />
+              </div>
 
-            <button
-              type="submit"
-              disabled={formLoading}
-              className="bg-[var(--accent)] hover:bg-[var(--accent-hover)] disabled:opacity-50 text-white font-bold py-2 px-4 rounded transition-colors"
-            >
-              {formLoading ? 'Creating...' : 'Create Admin'}
-            </button>
-          </form>
-        </div>
+              {formError && (
+                <div className="bg-destructive/20 border border-destructive/50 text-destructive px-4 py-3 rounded text-sm">
+                  {formError}
+                </div>
+              )}
+
+              <Button type="submit" disabled={formLoading}>
+                {formLoading ? 'Creating...' : 'Create Admin'}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
       )}
 
       {loading ? (
-        <div className="text-center py-12 text-[var(--muted)]">Loading...</div>
+        <div className="text-center py-12 text-muted-foreground">Loading...</div>
       ) : (
-        <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg overflow-hidden">
+        <Card>
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[var(--card-border)]">
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+              <tr className="border-b border-border">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Name
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Email
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Created
                 </th>
-                <th className="text-right p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-right p-4 text-sm font-medium text-muted-foreground">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--card-border)]">
+            <tbody className="divide-y divide-border">
               {admins.map((admin) => (
-                <tr key={admin.id} className="hover:bg-[var(--background)]">
+                <tr key={admin.id} className="hover:bg-background">
                   <td className="p-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[var(--accent)] flex items-center justify-center text-white font-bold text-sm">
+                      <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
                         {admin.name.charAt(0).toUpperCase()}
                       </div>
                       <span className="font-medium">{admin.name}</span>
                     </div>
                   </td>
                   <td className="p-4">
-                    <span className="text-[var(--muted)]">{admin.email}</span>
+                    <span className="text-muted-foreground">{admin.email}</span>
                   </td>
                   <td className="p-4">
-                    <span className="text-[var(--muted)] text-sm">
+                    <span className="text-muted-foreground text-sm">
                       {new Date(admin.createdAt).toLocaleDateString()}
                     </span>
                   </td>
                   <td className="p-4 text-right">
                     {admins.length > 1 && (
-                      <button
+                      <Button
+                        variant="ghost"
                         onClick={() => handleDeleteAdmin(admin.id)}
-                        className="text-red-400 hover:text-red-300 text-sm transition-colors"
+                        className="text-destructive hover:text-destructive text-sm"
                       >
                         Remove
-                      </button>
+                      </Button>
                     )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </Card>
       )}
     </div>
   );

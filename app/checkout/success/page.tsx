@@ -2,6 +2,8 @@ import { stripe } from '@/lib/stripe';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface SuccessPageProps {
   searchParams: Promise<{ session_id?: string }>;
@@ -15,15 +17,12 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
         <h1 className="text-3xl font-bold mb-4">Invalid Session</h1>
-        <p className="text-[var(--muted)] mb-8">
+        <p className="text-muted-foreground mb-8">
           No checkout session found. Please try again.
         </p>
-        <Link
-          href="/"
-          className="inline-block bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-3 px-6 rounded transition-colors"
-        >
-          Return to Store
-        </Link>
+        <Button asChild size="lg">
+          <Link href="/">Return to Store</Link>
+        </Button>
       </div>
     );
   }
@@ -35,15 +34,12 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
       return (
         <div className="container mx-auto px-4 py-12 text-center">
           <h1 className="text-3xl font-bold mb-4">Payment Pending</h1>
-          <p className="text-[var(--muted)] mb-8">
+          <p className="text-muted-foreground mb-8">
             Your payment is still being processed. Please wait a moment and refresh this page.
           </p>
-          <Link
-            href="/"
-            className="inline-block bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-3 px-6 rounded transition-colors"
-          >
-            Return to Store
-          </Link>
+          <Button asChild size="lg">
+            <Link href="/">Return to Store</Link>
+          </Button>
         </div>
       );
     }
@@ -85,58 +81,59 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             </svg>
           </div>
           <h1 className="text-3xl font-bold mb-2">Thank You!</h1>
-          <p className="text-[var(--muted)]">
+          <p className="text-muted-foreground">
             Your purchase was successful. Check your email for the download link.
           </p>
         </div>
 
         {ebook && (
-          <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg p-6 mb-8">
-            <div className="flex gap-6">
-              <div className="relative w-24 h-32 flex-shrink-0">
-                <Image
-                  src={ebook.coverImage}
-                  alt={ebook.title}
-                  fill
-                  className="object-cover rounded"
-                />
+          <Card className="mb-8">
+            <CardContent className="p-6">
+              <div className="flex gap-6">
+                <div className="relative w-24 h-32 flex-shrink-0">
+                  <Image
+                    src={ebook.coverImage}
+                    alt={ebook.title}
+                    fill
+                    className="object-cover rounded"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold mb-2">{ebook.title}</h2>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    by {ebook.author}
+                  </p>
+                  <p className="text-primary font-bold">
+                    ${(ebook.price / 100).toFixed(2)}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2 className="text-xl font-bold mb-2">{ebook.title}</h2>
-                <p className="text-[var(--muted)] text-sm mb-4">
-                  by {ebook.author}
-                </p>
-                <p className="text-[var(--accent)] font-bold">
-                  ${(ebook.price / 100).toFixed(2)}
-                </p>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         )}
 
         {downloadToken && (
-          <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg p-6 mb-8">
-            <h3 className="font-bold mb-4">Download Your Ebook</h3>
-            <p className="text-[var(--muted)] text-sm mb-4">
-              Click the button below to download your ebook. This link expires in 24 hours and can only be used once.
-            </p>
-            <Link
-              href={`/download/${downloadToken}`}
-              className="inline-block w-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-3 px-6 rounded transition-colors text-center"
-            >
-              Download Now
-            </Link>
-          </div>
+          <Card className="mb-8">
+            <CardContent className="p-6">
+              <h3 className="font-bold mb-4">Download Your Ebook</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                Click the button below to download your ebook. This link expires in 24 hours and can only be used once.
+              </p>
+              <Button asChild className="w-full" size="lg">
+                <Link href={`/download/${downloadToken}`}>Download Now</Link>
+              </Button>
+            </CardContent>
+          </Card>
         )}
 
         <div className="text-center">
-          <p className="text-[var(--muted)] text-sm mb-4">
+          <p className="text-muted-foreground text-sm mb-4">
             A confirmation email with the download link has been sent to{' '}
             <strong>{session.customer_email}</strong>
           </p>
           <Link
             href="/"
-            className="text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors"
+            className="text-primary hover:text-primary/80 transition-colors"
           >
             Continue Shopping
           </Link>
@@ -148,15 +145,12 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
         <h1 className="text-3xl font-bold mb-4">Something Went Wrong</h1>
-        <p className="text-[var(--muted)] mb-8">
+        <p className="text-muted-foreground mb-8">
           We could not retrieve your order details. Please check your email for the download link.
         </p>
-        <Link
-          href="/"
-          className="inline-block bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-3 px-6 rounded transition-colors"
-        >
-          Return to Store
-        </Link>
+        <Button asChild size="lg">
+          <Link href="/">Return to Store</Link>
+        </Button>
       </div>
     );
   }

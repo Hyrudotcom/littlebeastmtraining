@@ -1,6 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default async function AdminEbooksPage() {
   const ebooks = await prisma.ebook.findMany({
@@ -16,49 +18,48 @@ export default async function AdminEbooksPage() {
     <div>
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Ebooks</h1>
-        <Link
-          href="/admin/ebooks/new"
-          className="bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-2 px-4 rounded transition-colors"
-        >
-          Add New Ebook
-        </Link>
+        <Button asChild>
+          <Link href="/admin/ebooks/new">Add New Ebook</Link>
+        </Button>
       </div>
 
       {ebooks.length === 0 ? (
-        <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg p-12 text-center">
-          <p className="text-[var(--muted)] mb-4">No ebooks yet</p>
-          <Link
-            href="/admin/ebooks/new"
-            className="text-[var(--accent)] hover:text-[var(--accent-hover)]"
-          >
-            Add your first ebook
-          </Link>
-        </div>
+        <Card>
+          <CardContent className="p-12 text-center">
+            <p className="text-muted-foreground mb-4">No ebooks yet</p>
+            <Link
+              href="/admin/ebooks/new"
+              className="text-primary hover:text-primary/80"
+            >
+              Add your first ebook
+            </Link>
+          </CardContent>
+        </Card>
       ) : (
-        <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg overflow-hidden">
+        <Card>
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[var(--card-border)]">
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+              <tr className="border-b border-border">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Ebook
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Price
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Orders
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Created
                 </th>
-                <th className="text-right p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-right p-4 text-sm font-medium text-muted-foreground">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--card-border)]">
+            <tbody className="divide-y divide-border">
               {ebooks.map((ebook) => (
-                <tr key={ebook.id} className="hover:bg-[var(--background)]">
+                <tr key={ebook.id} className="hover:bg-background">
                   <td className="p-4">
                     <div className="flex items-center gap-4">
                       <div className="relative w-12 h-16 flex-shrink-0">
@@ -71,31 +72,31 @@ export default async function AdminEbooksPage() {
                       </div>
                       <div>
                         <p className="font-medium">{ebook.title}</p>
-                        <p className="text-sm text-[var(--muted)]">
+                        <p className="text-sm text-muted-foreground">
                           {ebook.author}
                         </p>
                       </div>
                     </div>
                   </td>
                   <td className="p-4">
-                    <span className="text-[var(--accent)] font-medium">
+                    <span className="text-primary font-medium">
                       ${(ebook.price / 100).toFixed(2)}
                     </span>
                   </td>
                   <td className="p-4">
-                    <span className="text-[var(--muted)]">
+                    <span className="text-muted-foreground">
                       {ebook._count.orders}
                     </span>
                   </td>
                   <td className="p-4">
-                    <span className="text-[var(--muted)] text-sm">
+                    <span className="text-muted-foreground text-sm">
                       {new Date(ebook.createdAt).toLocaleDateString()}
                     </span>
                   </td>
                   <td className="p-4 text-right">
                     <Link
                       href={`/admin/ebooks/${ebook.id}`}
-                      className="text-[var(--accent)] hover:text-[var(--accent-hover)] text-sm"
+                      className="text-primary hover:text-primary/80 text-sm"
                     >
                       Edit
                     </Link>
@@ -104,7 +105,7 @@ export default async function AdminEbooksPage() {
               ))}
             </tbody>
           </table>
-        </div>
+        </Card>
       )}
     </div>
   );

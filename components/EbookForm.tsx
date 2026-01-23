@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
 interface EbookFormProps {
   ebook?: {
@@ -124,39 +128,31 @@ export default function EbookForm({ ebook }: EbookFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="md:col-span-2">
-          <label htmlFor="title" className="block text-sm font-medium mb-2">
-            Title *
-          </label>
-          <input
+        <div className="md:col-span-2 space-y-2">
+          <Label htmlFor="title">Title *</Label>
+          <Input
             type="text"
             id="title"
             value={title}
             onChange={(e) => handleTitleChange(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
           />
         </div>
 
-        <div>
-          <label htmlFor="author" className="block text-sm font-medium mb-2">
-            Author *
-          </label>
-          <input
+        <div className="space-y-2">
+          <Label htmlFor="author">Author *</Label>
+          <Input
             type="text"
             id="author"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
           />
         </div>
 
-        <div>
-          <label htmlFor="price" className="block text-sm font-medium mb-2">
-            Price (USD) *
-          </label>
-          <input
+        <div className="space-y-2">
+          <Label htmlFor="price">Price (USD) *</Label>
+          <Input
             type="number"
             id="price"
             value={price}
@@ -164,81 +160,64 @@ export default function EbookForm({ ebook }: EbookFormProps) {
             required
             min="0"
             step="0.01"
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
           />
         </div>
 
-        <div className="md:col-span-2">
-          <label htmlFor="slug" className="block text-sm font-medium mb-2">
-            URL Slug *
-          </label>
-          <input
+        <div className="md:col-span-2 space-y-2">
+          <Label htmlFor="slug">URL Slug *</Label>
+          <Input
             type="text"
             id="slug"
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
           />
         </div>
 
-        <div className="md:col-span-2">
-          <label htmlFor="description" className="block text-sm font-medium mb-2">
-            Description *
-          </label>
-          <textarea
+        <div className="md:col-span-2 space-y-2">
+          <Label htmlFor="description">Description *</Label>
+          <Textarea
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
             rows={4}
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors resize-none"
+            className="resize-none"
           />
         </div>
 
-        <div className="md:col-span-2">
-          <label
-            htmlFor="tableOfContents"
-            className="block text-sm font-medium mb-2"
-          >
-            Table of Contents *
-          </label>
-          <textarea
+        <div className="md:col-span-2 space-y-2">
+          <Label htmlFor="tableOfContents">Table of Contents *</Label>
+          <Textarea
             id="tableOfContents"
             value={tableOfContents}
             onChange={(e) => setTableOfContents(e.target.value)}
             required
             rows={8}
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors resize-none font-mono text-sm"
+            className="resize-none font-mono text-sm"
           />
         </div>
 
-        <div className="md:col-span-2">
-          <label htmlFor="testimonial" className="block text-sm font-medium mb-2">
-            Testimonial (optional)
-          </label>
-          <input
+        <div className="md:col-span-2 space-y-2">
+          <Label htmlFor="testimonial">Testimonial (optional)</Label>
+          <Input
             type="text"
             id="testimonial"
             value={testimonial}
             onChange={(e) => setTestimonial(e.target.value)}
             placeholder="Customer quote for social proof"
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
           />
         </div>
 
-        <div className="md:col-span-2">
-          <label htmlFor="coverImage" className="block text-sm font-medium mb-2">
-            Cover Image URL *
-          </label>
-          <input
+        <div className="md:col-span-2 space-y-2">
+          <Label htmlFor="coverImage">Cover Image URL *</Label>
+          <Input
             type="text"
             id="coverImage"
             value={coverImage}
             onChange={(e) => setCoverImage(e.target.value)}
             required
             placeholder="/images/cover.jpg or https://..."
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
           />
           {coverImage && (
             <div className="mt-4 relative w-32 h-40">
@@ -252,49 +231,43 @@ export default function EbookForm({ ebook }: EbookFormProps) {
           )}
         </div>
 
-        <div className="md:col-span-2">
-          <label htmlFor="fileUrl" className="block text-sm font-medium mb-2">
-            PDF File URL *
-          </label>
-          <input
+        <div className="md:col-span-2 space-y-2">
+          <Label htmlFor="fileUrl">PDF File URL *</Label>
+          <Input
             type="text"
             id="fileUrl"
             value={fileUrl}
             onChange={(e) => setFileUrl(e.target.value)}
             required
             placeholder="Vercel Blob URL or placeholder://filename.pdf"
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
           />
-          <p className="mt-2 text-xs text-[var(--muted)]">
+          <p className="mt-2 text-xs text-muted-foreground">
             Use placeholder://filename.pdf for testing, or upload to Vercel Blob for production
           </p>
         </div>
       </div>
 
       {error && (
-        <div className="bg-red-500/20 border border-red-500/50 text-red-400 px-4 py-3 rounded">
+        <div className="bg-destructive/20 border border-destructive/50 text-destructive px-4 py-3 rounded">
           {error}
         </div>
       )}
 
       <div className="flex items-center gap-4">
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-[var(--accent)] hover:bg-[var(--accent-hover)] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded transition-colors"
-        >
+        <Button type="submit" disabled={loading} size="lg">
           {loading ? 'Saving...' : isEditing ? 'Update Ebook' : 'Create Ebook'}
-        </button>
+        </Button>
 
         {isEditing && (
-          <button
+          <Button
             type="button"
+            variant="ghost"
             onClick={handleDelete}
             disabled={loading}
-            className="text-red-400 hover:text-red-300 transition-colors"
+            className="text-destructive hover:text-destructive"
           >
             Delete Ebook
-          </button>
+          </Button>
         )}
       </div>
     </form>

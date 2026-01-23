@@ -1,4 +1,8 @@
 import { prisma } from '@/lib/prisma';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface OrdersPageProps {
   searchParams: Promise<{ email?: string }>;
@@ -34,66 +38,60 @@ export default async function AdminOrdersPage({ searchParams }: OrdersPageProps)
 
       <div className="mb-6">
         <form method="GET" className="flex gap-4">
-          <input
+          <Input
             type="email"
             name="email"
             placeholder="Filter by email..."
             defaultValue={emailFilter || ''}
-            className="flex-1 max-w-md px-4 py-2 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
+            className="flex-1 max-w-md"
           />
-          <button
-            type="submit"
-            className="bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-2 px-4 rounded transition-colors"
-          >
-            Filter
-          </button>
+          <Button type="submit">Filter</Button>
           {emailFilter && (
-            <a
-              href="/admin/orders"
-              className="border border-[var(--card-border)] hover:border-[var(--accent)] text-[var(--foreground)] font-bold py-2 px-4 rounded transition-colors"
-            >
-              Clear
-            </a>
+            <Button asChild variant="outline">
+              <Link href="/admin/orders">Clear</Link>
+            </Button>
           )}
         </form>
       </div>
 
       {orders.length === 0 ? (
-        <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg p-12 text-center">
-          <p className="text-[var(--muted)]">
-            {emailFilter ? 'No orders found for this email' : 'No orders yet'}
-          </p>
-        </div>
+        <Card>
+          <CardContent className="p-12 text-center">
+            <p className="text-muted-foreground">
+              {emailFilter ? 'No orders found for this email' : 'No orders yet'}
+            </p>
+          </CardContent>
+        </Card>
       ) : (
-        <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg overflow-hidden">
+        <Card>
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[var(--card-border)]">
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+              <tr className="border-b border-border">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Order
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Email
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Ebook
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Amount
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Status
                 </th>
-                <th className="text-left p-4 text-sm font-medium text-[var(--muted)]">
+                <th className="text-left p-4 text-sm font-medium text-muted-foreground">
                   Date
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--card-border)]">
+            <tbody className="divide-y divide-border">
               {orders.map((order) => (
-                <tr key={order.id} className="hover:bg-[var(--background)]">
+                <tr key={order.id} className="hover:bg-background">
                   <td className="p-4">
-                    <span className="font-mono text-sm text-[var(--muted)]">
+                    <span className="font-mono text-sm text-muted-foreground">
                       {order.id.slice(0, 8)}...
                     </span>
                   </td>
@@ -104,7 +102,7 @@ export default async function AdminOrdersPage({ searchParams }: OrdersPageProps)
                     <span className="text-sm">{order.ebook.title}</span>
                   </td>
                   <td className="p-4">
-                    <span className="text-[var(--accent)] font-medium">
+                    <span className="text-primary font-medium">
                       ${(order.amount / 100).toFixed(2)}
                     </span>
                   </td>
@@ -122,7 +120,7 @@ export default async function AdminOrdersPage({ searchParams }: OrdersPageProps)
                     </span>
                   </td>
                   <td className="p-4">
-                    <span className="text-[var(--muted)] text-sm">
+                    <span className="text-muted-foreground text-sm">
                       {new Date(order.createdAt).toLocaleDateString()}{' '}
                       {new Date(order.createdAt).toLocaleTimeString()}
                     </span>
@@ -131,7 +129,7 @@ export default async function AdminOrdersPage({ searchParams }: OrdersPageProps)
               ))}
             </tbody>
           </table>
-        </div>
+        </Card>
       )}
     </div>
   );

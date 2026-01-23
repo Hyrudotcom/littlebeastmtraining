@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 interface ErrorPageProps {
   searchParams: Promise<{ reason?: string }>;
@@ -34,9 +35,9 @@ export default async function DownloadErrorPage({ searchParams }: ErrorPageProps
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-lg text-center">
-      <div className="inline-flex items-center justify-center w-16 h-16 bg-red-500/20 rounded-full mb-6">
+      <div className="inline-flex items-center justify-center w-16 h-16 bg-destructive/20 rounded-full mb-6">
         <svg
-          className="w-8 h-8 text-red-500"
+          className="w-8 h-8 text-destructive"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -51,21 +52,15 @@ export default async function DownloadErrorPage({ searchParams }: ErrorPageProps
       </div>
 
       <h1 className="text-3xl font-bold mb-4">{error.title}</h1>
-      <p className="text-[var(--muted)] mb-8">{error.message}</p>
+      <p className="text-muted-foreground mb-8">{error.message}</p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Link
-          href="/download/request"
-          className="inline-block bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-3 px-6 rounded transition-colors"
-        >
-          Request New Link
-        </Link>
-        <Link
-          href="/"
-          className="inline-block border border-[var(--card-border)] hover:border-[var(--accent)] text-[var(--foreground)] font-bold py-3 px-6 rounded transition-colors"
-        >
-          Return to Store
-        </Link>
+        <Button asChild size="lg">
+          <Link href="/download/request">Request New Link</Link>
+        </Button>
+        <Button asChild variant="outline" size="lg">
+          <Link href="/">Return to Store</Link>
+        </Button>
       </div>
     </div>
   );

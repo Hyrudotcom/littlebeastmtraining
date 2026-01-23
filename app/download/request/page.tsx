@@ -2,6 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 export default function DownloadRequestPage() {
   const [email, setEmail] = useState('');
@@ -57,68 +61,61 @@ export default function DownloadRequestPage() {
         </div>
 
         <h1 className="text-3xl font-bold mb-4">Check Your Email</h1>
-        <p className="text-[var(--muted)] mb-8">
+        <p className="text-muted-foreground mb-8">
           If we found any purchases associated with <strong>{email}</strong>, we've sent new download links to that address.
         </p>
 
-        <Link
-          href="/"
-          className="inline-block bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-3 px-6 rounded transition-colors"
-        >
-          Return to Store
-        </Link>
+        <Button asChild size="lg">
+          <Link href="/">Return to Store</Link>
+        </Button>
       </div>
     );
   }
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-lg">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-4">Request Download Link</h1>
-        <p className="text-[var(--muted)]">
-          Enter the email address you used for your purchase and we'll send you a new download link.
-        </p>
-      </div>
+      <Card>
+        <CardHeader className="text-center">
+          <CardTitle>Request Download Link</CardTitle>
+          <CardDescription>
+            Enter the email address you used for your purchase and we'll send you a new download link.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email Address</Label>
+              <Input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="your@email.com"
+              />
+            </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-2">
-            Email Address
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
-            placeholder="your@email.com"
-          />
-        </div>
+            {error && (
+              <div className="bg-destructive/20 border border-destructive/50 text-destructive px-4 py-3 rounded">
+                {error}
+              </div>
+            )}
 
-        {error && (
-          <div className="bg-red-500/20 border border-red-500/50 text-red-400 px-4 py-3 rounded">
-            {error}
+            <Button type="submit" disabled={loading} className="w-full" size="lg">
+              {loading ? 'Sending...' : 'Send Download Link'}
+            </Button>
+          </form>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Back to Store
+            </Link>
           </div>
-        )}
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded transition-colors"
-        >
-          {loading ? 'Sending...' : 'Send Download Link'}
-        </button>
-      </form>
-
-      <div className="mt-8 text-center">
-        <Link
-          href="/"
-          className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-        >
-          Back to Store
-        </Link>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

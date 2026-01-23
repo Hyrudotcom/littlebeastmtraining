@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
 
 interface AdminNavProps {
   adminName: string;
@@ -25,13 +26,13 @@ export default function AdminNav({ adminName }: AdminNavProps) {
   };
 
   return (
-    <nav className="fixed left-0 top-0 h-full w-64 bg-[var(--card-bg)] border-r border-[var(--card-border)] flex flex-col">
-      <div className="p-6 border-b border-[var(--card-border)]">
+    <nav className="fixed left-0 top-0 h-full w-64 bg-card border-r border-border flex flex-col">
+      <div className="p-6 border-b border-border">
         <Link href="/" className="text-lg font-bold tracking-tight uppercase">
-          <span className="text-[var(--foreground)]">Little Beast</span>{' '}
-          <span className="text-[var(--accent)]">M</span>
+          <span className="text-foreground">Little Beast</span>{' '}
+          <span className="text-primary">M</span>
         </Link>
-        <p className="text-xs text-[var(--muted)] mt-1">Admin Dashboard</p>
+        <p className="text-xs text-muted-foreground mt-1">Admin Dashboard</p>
       </div>
 
       <div className="flex-1 py-6">
@@ -46,8 +47,8 @@ export default function AdminNav({ adminName }: AdminNavProps) {
                   href={item.href}
                   className={`flex items-center gap-3 px-6 py-3 transition-colors ${
                     isActive
-                      ? 'bg-[var(--accent)]/10 text-[var(--accent)] border-r-2 border-[var(--accent)]'
-                      : 'text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--background)]'
+                      ? 'bg-primary/10 text-primary border-r-2 border-primary'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-background'
                   }`}
                 >
                   <svg
@@ -71,22 +72,23 @@ export default function AdminNav({ adminName }: AdminNavProps) {
         </ul>
       </div>
 
-      <div className="p-6 border-t border-[var(--card-border)]">
+      <div className="p-6 border-t border-border">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-full bg-[var(--accent)] flex items-center justify-center text-white font-bold">
+          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
             {adminName.charAt(0).toUpperCase()}
           </div>
           <div>
             <p className="font-medium text-sm">{adminName}</p>
-            <p className="text-xs text-[var(--muted)]">Administrator</p>
+            <p className="text-xs text-muted-foreground">Administrator</p>
           </div>
         </div>
-        <button
+        <Button
+          variant="ghost"
           onClick={handleLogout}
-          className="w-full text-left text-sm text-[var(--muted)] hover:text-red-400 transition-colors flex items-center gap-2"
+          className="w-full justify-start text-muted-foreground hover:text-destructive px-0"
         >
           <svg
-            className="w-4 h-4"
+            className="w-4 h-4 mr-2"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -99,7 +101,7 @@ export default function AdminNav({ adminName }: AdminNavProps) {
             />
           </svg>
           Sign Out
-        </button>
+        </Button>
       </div>
     </nav>
   );

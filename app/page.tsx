@@ -9,16 +9,13 @@ export default async function HomePage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-tight">
-          Train Like a <span className="text-[var(--accent)]">Beast</span>
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 max-w-3xl mx-auto leading-tight">
+          Train with <span className="text-primary">LittleBeastM&apos;s</span> knowledge and years of experience — distilled into practical training ebooks.
         </h1>
-        <p className="text-[var(--muted)] text-lg max-w-2xl mx-auto">
-          Premium training programs, nutrition guides, and mindset content to help you reach your athletic potential.
-        </p>
       </div>
 
       {ebooks.length === 0 ? (
-        <p className="text-center text-[var(--muted)]">
+        <p className="text-center text-muted-foreground">
           No ebooks available at the moment. Check back soon!
         </p>
       ) : (

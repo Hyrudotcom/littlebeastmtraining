@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -42,70 +46,61 @@ export default function AdminLoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
           <Link href="/" className="text-xl font-bold tracking-tight uppercase">
-            <span className="text-[var(--foreground)]">Little Beast</span>{' '}
-            <span className="text-[var(--accent)]">M</span>
+            <span className="text-foreground">Little Beast</span>{' '}
+            <span className="text-primary">M</span>
           </Link>
-          <h1 className="text-2xl font-bold mt-6">Admin Login</h1>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
-              placeholder="admin@example.com"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-4 py-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded focus:outline-none focus:border-[var(--accent)] transition-colors"
-              placeholder="Enter your password"
-            />
-          </div>
-
-          {error && (
-            <div className="bg-red-500/20 border border-red-500/50 text-red-400 px-4 py-3 rounded">
-              {error}
+          <CardTitle className="mt-6">Admin Login</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email Address</Label>
+              <Input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="admin@example.com"
+              />
             </div>
-          )}
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded transition-colors"
-          >
-            {loading ? 'Signing in...' : 'Sign In'}
-          </button>
-        </form>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="Enter your password"
+              />
+            </div>
 
-        <div className="mt-8 text-center">
-          <Link
-            href="/"
-            className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors text-sm"
-          >
-            Back to Store
-          </Link>
-        </div>
-      </div>
+            {error && (
+              <div className="bg-destructive/20 border border-destructive/50 text-destructive px-4 py-3 rounded">
+                {error}
+              </div>
+            )}
+
+            <Button type="submit" disabled={loading} className="w-full" size="lg">
+              {loading ? 'Signing in...' : 'Sign In'}
+            </Button>
+          </form>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/"
+              className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+            >
+              Back to Store
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

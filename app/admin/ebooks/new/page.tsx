@@ -7,7 +7,7 @@ export default function NewEbookPage() {
       <div className="mb-8">
         <Link
           href="/admin/ebooks"
-          className="text-[var(--muted)] hover:text-[var(--foreground)] text-sm flex items-center gap-2"
+          className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-2"
         >
           <svg
             className="w-4 h-4"

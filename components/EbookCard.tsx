@@ -1,6 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 
 interface EbookCardProps {
   id: string;
@@ -43,8 +45,8 @@ export default function EbookCard({
   };
 
   return (
-    <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg overflow-hidden hover:border-[var(--accent)] transition-all duration-300 flex flex-col">
-      <div className="relative aspect-[3/4] bg-[var(--background)]">
+    <Card className="overflow-hidden hover:border-primary transition-all duration-300 flex flex-col">
+      <div className="relative aspect-[3/4] bg-background">
         <Image
           src={coverImage}
           alt={title}
@@ -53,23 +55,26 @@ export default function EbookCard({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <div className="p-5 flex flex-col flex-1">
+      <CardContent className="p-5 flex flex-col flex-1">
         <h3 className="text-lg font-bold mb-2">{title}</h3>
-        <p className="text-2xl font-bold text-[var(--accent)] mb-3">
+        <p className="text-2xl font-bold text-primary mb-3">
           ${formattedPrice}
         </p>
         {testimonial && (
-          <p className="text-sm text-[var(--muted)] italic mb-4 flex-1">
+          <p className="text-sm text-muted-foreground italic mb-4 flex-1">
             &quot;{testimonial}&quot;
           </p>
         )}
-        <button
+      </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button
           onClick={handleBuyNow}
-          className="w-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-3 px-4 rounded transition-colors duration-200 uppercase tracking-wide min-h-[44px]"
+          className="w-full font-bold uppercase tracking-wide"
+          size="lg"
         >
           Buy Now
-        </button>
-      </div>
-    </div>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }
