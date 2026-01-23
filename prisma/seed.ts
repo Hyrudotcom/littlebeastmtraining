@@ -1,0 +1,143 @@
+import { PrismaClient } from '@prisma/client';
+import * as bcrypt from 'bcryptjs';
+
+const prisma = new PrismaClient();
+
+async function main() {
+  // Create demo ebooks
+  const ebooks = [
+    {
+      title: '12-Week Strength Program',
+      author: 'Little Beast M',
+      description:
+        'Transform your physique with this comprehensive 12-week strength training program. Designed for intermediate to advanced lifters, this program focuses on progressive overload and compound movements to build serious muscle and strength. Includes detailed workout logs, exercise demonstrations, and weekly progression guidelines.',
+      tableOfContents: `
+Week 1-4: Foundation Phase
+- Day 1: Lower Body Power
+- Day 2: Upper Body Push
+- Day 3: Active Recovery
+- Day 4: Lower Body Volume
+- Day 5: Upper Body Pull
+- Day 6-7: Rest
+
+Week 5-8: Hypertrophy Phase
+- Increased volume protocols
+- Superset and dropset techniques
+- Progressive overload tracking
+
+Week 9-12: Peak Phase
+- Strength testing protocols
+- Deload strategies
+- Competition prep guidelines
+      `.trim(),
+      testimonial:
+        "This program completely changed my approach to training. Gained 15lbs of muscle in 12 weeks! - Jake R.",
+      price: 2499,
+      coverImage: '/images/strength-program.svg',
+      fileUrl: 'placeholder://strength-program.pdf',
+      slug: '12-week-strength-program',
+    },
+    {
+      title: "Athlete's Meal Prep Guide",
+      author: 'Little Beast M',
+      description:
+        "Fuel your performance with this complete nutrition guide designed specifically for athletes. Learn how to meal prep efficiently, optimize your macros for muscle growth and recovery, and never run out of delicious, performance-boosting recipes. Includes 50+ recipes, shopping lists, and meal timing strategies.",
+      tableOfContents: `
+Chapter 1: Nutrition Fundamentals
+- Understanding macronutrients
+- Calorie calculations for athletes
+- Meal timing for performance
+
+Chapter 2: Meal Prep Mastery
+- Kitchen essentials
+- Batch cooking techniques
+- Storage and portion control
+
+Chapter 3: Recipes
+- High-protein breakfasts (10 recipes)
+- Power lunches (15 recipes)
+- Recovery dinners (15 recipes)
+- Healthy snacks (10 recipes)
+
+Chapter 4: Sample Meal Plans
+- Bulking phase
+- Cutting phase
+- Maintenance phase
+      `.trim(),
+      testimonial:
+        "Finally, a nutrition guide that makes sense for athletes. The recipes are simple and delicious! - Sarah M.",
+      price: 1999,
+      coverImage: '/images/meal-prep-guide.svg',
+      fileUrl: 'placeholder://meal-prep-guide.pdf',
+      slug: 'athletes-meal-prep-guide',
+    },
+    {
+      title: 'Mental Performance Mastery',
+      author: 'Little Beast M',
+      description:
+        "Unlock your mental edge with proven sports psychology techniques. This guide covers visualization, focus training, pre-competition routines, and overcoming mental barriers. Whether you're an athlete, entrepreneur, or anyone looking to perform at their best, this book will give you the mental tools for success.",
+      tableOfContents: `
+Part 1: The Champion Mindset
+- Fixed vs. growth mindset
+- Building mental resilience
+- The psychology of peak performance
+
+Part 2: Visualization Techniques
+- Creating vivid mental imagery
+- Competition day visualization
+- Recovery visualization
+
+Part 3: Focus & Concentration
+- Eliminating distractions
+- Flow state mastery
+- Pre-performance routines
+
+Part 4: Overcoming Obstacles
+- Managing competition anxiety
+- Bouncing back from setbacks
+- Dealing with pressure
+      `.trim(),
+      testimonial:
+        "This book helped me overcome my competition anxiety. Now I perform better under pressure than ever. - Mike T.",
+      price: 1499,
+      coverImage: '/images/mental-mastery.svg',
+      fileUrl: 'placeholder://mental-mastery.pdf',
+      slug: 'mental-performance-mastery',
+    },
+  ];
+
+  for (const ebook of ebooks) {
+    await prisma.ebook.upsert({
+      where: { slug: ebook.slug },
+      update: ebook,
+      create: ebook,
+    });
+  }
+
+  console.log('Created demo ebooks');
+
+  // Create default admin user
+  const passwordHash = await bcrypt.hash('admin123', 10);
+  await prisma.admin.upsert({
+    where: { email: 'admin@littlebeastmtraining.com' },
+    update: {},
+    create: {
+      email: 'admin@littlebeastmtraining.com',
+      name: 'Admin',
+      passwordHash,
+    },
+  });
+
+  console.log('Created default admin user');
+  console.log('Email: admin@littlebeastmtraining.com');
+  console.log('Password: admin123');
+}
+
+main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });

@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Ebook {
+  id              String   @id @default(cuid())
+  title           String
+  author          String
+  description     String
+  tableOfContents String   // Preview content
+  testimonial     String?  // Customer quote for social proof
+  price           Int      // in cents
+  coverImage      String
+  fileUrl         String   // stored in Vercel Blob
+  slug            String   @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  orders          Order[]
+}
+
+model Order {
+  id              String     @id @default(cuid())
+  email           String
+  stripeSessionId String     @unique
+  status          String     // pending, completed, failed
+  amount          Int        // in cents
+  ebookId         String
+  ebook           Ebook      @relation(fields: [ebookId], references: [id])
+  downloads       Download[]
+  createdAt       DateTime   @default(now())
+}
+
+model Download {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  expiresAt DateTime // 24 hours from creation
+  used      Boolean  @default(false)
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  createdAt    DateTime @default(now())
+}

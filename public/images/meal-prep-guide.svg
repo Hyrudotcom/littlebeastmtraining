@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <rect fill="#1a1a1a" width="300" height="400"/>
+  <rect fill="#2d5a27" x="20" y="20" width="260" height="360" rx="8"/>
+  <text x="150" y="180" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">ATHLETE'S</text>
+  <text x="150" y="210" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">MEAL PREP</text>
+  <text x="150" y="240" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">GUIDE</text>
+</svg>
