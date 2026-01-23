@@ -34,7 +34,7 @@ Week 9-12: Peak Phase
         "This program completely changed my approach to training. Gained 15lbs of muscle in 12 weeks! - Jake R.",
       price: 2499,
       coverImage: '/images/strength-program.svg',
-      fileUrl: 'placeholder://strength-program.pdf',
+      fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/elite-weighted-dips.pdf',
       slug: '12-week-strength-program',
     },
     {
@@ -68,7 +68,7 @@ Chapter 4: Sample Meal Plans
         "Finally, a nutrition guide that makes sense for athletes. The recipes are simple and delicious! - Sarah M.",
       price: 1999,
       coverImage: '/images/meal-prep-guide.svg',
-      fileUrl: 'placeholder://meal-prep-guide.pdf',
+      fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/lbm-blueprint-8.pdf',
       slug: 'athletes-meal-prep-guide',
     },
     {
@@ -101,7 +101,7 @@ Part 4: Overcoming Obstacles
         "This book helped me overcome my competition anxiety. Now I perform better under pressure than ever. - Mike T.",
       price: 1499,
       coverImage: '/images/mental-mastery.svg',
-      fileUrl: 'placeholder://mental-mastery.pdf',
+      fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/LittleBeastMDiet.pdf',
       slug: 'mental-performance-mastery',
     },
   ];
