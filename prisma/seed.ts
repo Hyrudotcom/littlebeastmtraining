@@ -20,38 +20,7 @@ async function main() {
   // Create demo ebooks
   const ebooks = [
     {
-      title: '12-Week Strength Program',
-      author: 'Little Beast M',
-      description:
-        'Transform your physique with this comprehensive 12-week strength training program. Designed for intermediate to advanced lifters, this program focuses on progressive overload and compound movements to build serious muscle and strength. Includes detailed workout logs, exercise demonstrations, and weekly progression guidelines.',
-      tableOfContents: `
-Week 1-4: Foundation Phase
-- Day 1: Lower Body Power
-- Day 2: Upper Body Push
-- Day 3: Active Recovery
-- Day 4: Lower Body Volume
-- Day 5: Upper Body Pull
-- Day 6-7: Rest
-
-Week 5-8: Hypertrophy Phase
-- Increased volume protocols
-- Superset and dropset techniques
-- Progressive overload tracking
-
-Week 9-12: Peak Phase
-- Strength testing protocols
-- Deload strategies
-- Competition prep guidelines
-      `.trim(),
-      testimonial:
-        "This program completely changed my approach to training. Gained 15lbs of muscle in 12 weeks! - Jake R.",
-      price: 2499,
-      coverImage: '/images/strength-program.svg',
-      fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/elite-weighted-dips.pdf',
-      slug: '12-week-strength-program',
-    },
-    {
-      title: "Athlete's Meal Prep Guide",
+      title: 'THE LBM BLUEPRINT',
       author: 'Little Beast M',
       description:
         "Fuel your performance with this complete nutrition guide designed specifically for athletes. Learn how to meal prep efficiently, optimize your macros for muscle growth and recovery, and never run out of delicious, performance-boosting recipes. Includes 50+ recipes, shopping lists, and meal timing strategies.",
@@ -79,10 +48,41 @@ Chapter 4: Sample Meal Plans
       `.trim(),
       testimonial:
         "Finally, a nutrition guide that makes sense for athletes. The recipes are simple and delicious! - Sarah M.",
-      price: 1999,
-      coverImage: '/images/meal-prep-guide.svg',
+      price: 2000,
+      coverImage: '/images/lbm-blueprint.png',
       fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/lbm-blueprint-8.pdf',
-      slug: 'athletes-meal-prep-guide',
+      slug: 'the-lbm-blueprint',
+    },
+    {
+      title: '12-Week Strength Program',
+      author: 'Little Beast M',
+      description:
+        'Transform your physique with this comprehensive 12-week strength training program. Designed for intermediate to advanced lifters, this program focuses on progressive overload and compound movements to build serious muscle and strength. Includes detailed workout logs, exercise demonstrations, and weekly progression guidelines.',
+      tableOfContents: `
+Week 1-4: Foundation Phase
+- Day 1: Lower Body Power
+- Day 2: Upper Body Push
+- Day 3: Active Recovery
+- Day 4: Lower Body Volume
+- Day 5: Upper Body Pull
+- Day 6-7: Rest
+
+Week 5-8: Hypertrophy Phase
+- Increased volume protocols
+- Superset and dropset techniques
+- Progressive overload tracking
+
+Week 9-12: Peak Phase
+- Strength testing protocols
+- Deload strategies
+- Competition prep guidelines
+      `.trim(),
+      testimonial:
+        "This program completely changed my approach to training. Gained 15lbs of muscle in 12 weeks! - Jake R.",
+      price: 2000,
+      coverImage: '/images/elite-weighted-dips.png',
+      fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/elite-weighted-dips.pdf',
+      slug: '12-week-strength-program',
     },
     {
       title: 'Mental Performance Mastery',
@@ -112,8 +112,8 @@ Part 4: Overcoming Obstacles
       `.trim(),
       testimonial:
         "This book helped me overcome my competition anxiety. Now I perform better under pressure than ever. - Mike T.",
-      price: 1499,
-      coverImage: '/images/mental-mastery.svg',
+      price: 2000,
+      coverImage: '/images/lbm-diet.png',
       fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/LittleBeastMDiet.pdf',
       slug: 'mental-performance-mastery',
     },

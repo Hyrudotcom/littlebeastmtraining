@@ -8,9 +8,9 @@ export default async function HomePage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 max-w-3xl mx-auto leading-tight">
-          Train with <span className="text-primary">LittleBeastM&apos;s</span> knowledge and years of experience — distilled into practical training ebooks.
+      <div className="text-center py-16 md:py-24 mb-12">
+        <h1 className="text-3xl md:text-4xl font-bold max-w-3xl mx-auto leading-tight">
+          Train with <span className="text-primary">LittleBeastM&apos;s</span> knowledge and years of experience.
         </h1>
       </div>
 
@@ -27,7 +27,6 @@ export default async function HomePage() {
               title={ebook.title}
               price={ebook.price}
               coverImage={ebook.coverImage}
-              testimonial={ebook.testimonial}
               slug={ebook.slug}
             />
           ))}

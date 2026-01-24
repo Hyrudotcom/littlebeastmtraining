@@ -9,7 +9,6 @@ interface EbookCardProps {
   title: string;
   price: number;
   coverImage: string;
-  testimonial: string | null;
   slug: string;
 }
 
@@ -17,7 +16,6 @@ export default function EbookCard({
   title,
   price,
   coverImage,
-  testimonial,
   slug,
 }: EbookCardProps) {
   const formattedPrice = (price / 100).toFixed(2);
@@ -57,14 +55,9 @@ export default function EbookCard({
       </div>
       <CardContent className="p-5 flex flex-col flex-1">
         <h3 className="text-lg font-bold mb-2">{title}</h3>
-        <p className="text-2xl font-bold text-primary mb-3">
+        <p className="text-2xl font-bold text-primary">
           ${formattedPrice}
         </p>
-        {testimonial && (
-          <p className="text-sm text-muted-foreground italic mb-4 flex-1">
-            &quot;{testimonial}&quot;
-          </p>
-        )}
       </CardContent>
       <CardFooter className="p-5 pt-0">
         <Button

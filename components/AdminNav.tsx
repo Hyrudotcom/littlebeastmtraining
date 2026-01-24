@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 
@@ -28,11 +29,20 @@ export default function AdminNav({ adminName }: AdminNavProps) {
   return (
     <nav className="fixed left-0 top-0 h-full w-64 bg-card border-r border-border flex flex-col">
       <div className="p-6 border-b border-border">
-        <Link href="/" className="text-lg font-bold tracking-tight uppercase">
-          <span className="text-foreground">Little Beast</span>{' '}
-          <span className="text-primary">M</span>
+        <Link href="/" className="flex items-center gap-3 text-lg font-bold tracking-tight uppercase">
+          <Image
+            src="/logo.svg"
+            alt="LBM Logo"
+            width={32}
+            height={32}
+            className="rounded-md"
+          />
+          <span>
+            <span className="text-foreground">Little Beast</span>{' '}
+            <span className="text-primary">M</span>
+          </span>
         </Link>
-        <p className="text-xs text-muted-foreground mt-1">Admin Dashboard</p>
+        <p className="text-xs text-muted-foreground mt-2">Admin Dashboard</p>
       </div>
 
       <div className="flex-1 py-6">
