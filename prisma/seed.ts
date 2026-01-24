@@ -117,6 +117,33 @@ Part 4: Overcoming Obstacles
       fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/LittleBeastMDiet.pdf',
       slug: 'lbm-nutrition',
     },
+    {
+      title: 'Handstand Press Program',
+      author: 'Little Beast M',
+      description:
+        'Master the handstand press with this progressive program. From pike press foundations to full straddle and straight body press, this guide covers all the strength, mobility, and technique work needed to achieve this impressive skill.',
+      tableOfContents: `
+Phase 1: Foundation
+- Pike press progressions
+- Shoulder strength work
+- Hip flexibility drills
+
+Phase 2: Straddle Press
+- Straddle mobility
+- Compression strength
+- Technique cues
+
+Phase 3: Full Press
+- Straight body press
+- Programming and frequency
+- Common mistakes to avoid
+      `.trim(),
+      testimonial: null,
+      price: 2000,
+      coverImage: '/images/hs-press.jpeg',
+      fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/Handstand_Press_Program_Fixed.pdf',
+      slug: 'handstand-press-program',
+    },
   ];
 
   for (const ebook of ebooks) {
