@@ -36,14 +36,14 @@ export default function BundleCard() {
         </div>
         <h3 className="text-2xl font-bold mb-2">Complete LBM Bundle</h3>
         <p className="text-muted-foreground mb-6">
-          Get all 3 ebooks and save $16
+          Get all 4 ebooks and save $31
         </p>
         <div className="flex items-center justify-center gap-3 mb-2">
-          <span className="text-2xl text-muted-foreground line-through">$66</span>
-          <span className="text-4xl font-bold text-primary drop-shadow-[0_0_15px_rgba(255,107,53,0.6)]">$50</span>
+          <span className="text-2xl text-muted-foreground line-through">$86</span>
+          <span className="text-4xl font-bold text-primary drop-shadow-[0_0_15px_rgba(255,107,53,0.6)]">$55</span>
         </div>
         <p className="text-sm text-muted-foreground">
-          THE LBM BLUEPRINT + Elite Weighted Dips + LBM Nutrition
+          THE LBM BLUEPRINT + Elite Weighted Dips + Handstand Press + LBM Nutrition
         </p>
       </CardContent>
       <CardFooter className="p-8 pt-0 relative">

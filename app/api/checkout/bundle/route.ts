@@ -8,12 +8,12 @@ export async function POST() {
     const ebooks = await prisma.ebook.findMany({
       where: {
         slug: {
-          in: ['the-lbm-blueprint', 'elite-weighted-dips', 'lbm-nutrition'],
+          in: ['the-lbm-blueprint', 'elite-weighted-dips', 'handstand-press-program', 'lbm-nutrition'],
         },
       },
     });
 
-    if (ebooks.length !== 3) {
+    if (ebooks.length !== 4) {
       return NextResponse.json(
         { error: 'Bundle ebooks not found' },
         { status: 404 }
@@ -31,9 +31,9 @@ export async function POST() {
             product_data: {
               name: 'Complete LBM Bundle',
               description:
-                'Get all 3 ebooks: THE LBM BLUEPRINT, Elite Weighted Dips, and LBM Nutrition',
+                'Get all 4 ebooks: THE LBM BLUEPRINT, Elite Weighted Dips, Handstand Press Program, and LBM Nutrition',
             },
-            unit_amount: 5000, // $50
+            unit_amount: 5500, // $55
           },
           quantity: 1,
         },
