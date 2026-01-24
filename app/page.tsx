@@ -2,9 +2,22 @@ import { prisma } from '@/lib/prisma';
 import EbookCard from '@/components/EbookCard';
 import BundleCard from '@/components/BundleCard';
 
+// Custom order for ebooks
+const ebookOrder = [
+  'the-lbm-blueprint',
+  'elite-weighted-dips',
+  'handstand-press-program',
+  'lbm-nutrition',
+];
+
 export default async function HomePage() {
-  const ebooks = await prisma.ebook.findMany({
-    orderBy: { createdAt: 'desc' },
+  const ebooks = await prisma.ebook.findMany();
+
+  // Sort ebooks by custom order
+  const sortedEbooks = ebooks.sort((a, b) => {
+    const aIndex = ebookOrder.indexOf(a.slug);
+    const bIndex = ebookOrder.indexOf(b.slug);
+    return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
   });
 
   return (
@@ -15,14 +28,20 @@ export default async function HomePage() {
         </h1>
       </div>
 
-      {ebooks.length === 0 ? (
+      {sortedEbooks.length === 0 ? (
         <p className="text-center text-muted-foreground">
           No ebooks available at the moment. Check back soon!
         </p>
       ) : (
         <>
+          {/* Bundle Section - First */}
+          <div className="max-w-md mx-auto mb-16">
+            <BundleCard />
+          </div>
+
+          {/* Ebooks Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {ebooks.map((ebook) => (
+            {sortedEbooks.map((ebook) => (
               <EbookCard
                 key={ebook.id}
                 id={ebook.id}
@@ -32,11 +51,6 @@ export default async function HomePage() {
                 slug={ebook.slug}
               />
             ))}
-          </div>
-
-          {/* Bundle Section */}
-          <div className="max-w-md mx-auto mt-16">
-            <BundleCard />
           </div>
         </>
       )}
