@@ -54,7 +54,7 @@ Chapter 4: Sample Meal Plans
       slug: 'the-lbm-blueprint',
     },
     {
-      title: '12-Week Strength Program',
+      title: 'Elite Weighted Dips',
       author: 'Little Beast M',
       description:
         'Transform your physique with this comprehensive 12-week strength training program. Designed for intermediate to advanced lifters, this program focuses on progressive overload and compound movements to build serious muscle and strength. Includes detailed workout logs, exercise demonstrations, and weekly progression guidelines.',
@@ -85,7 +85,7 @@ Week 9-12: Peak Phase
       slug: '12-week-strength-program',
     },
     {
-      title: 'Mental Performance Mastery',
+      title: 'LBM Nutrition',
       author: 'Little Beast M',
       description:
         "Unlock your mental edge with proven sports psychology techniques. This guide covers visualization, focus training, pre-competition routines, and overcoming mental barriers. Whether you're an athlete, entrepreneur, or anyone looking to perform at their best, this book will give you the mental tools for success.",
