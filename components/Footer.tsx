@@ -1,4 +1,4 @@
-import { Youtube, Instagram } from 'lucide-react';
+import { Youtube, Instagram, Send } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -24,6 +24,14 @@ export default function Footer() {
               className="text-muted-foreground hover:text-primary transition-all duration-300 hover:drop-shadow-[0_0_10px_rgba(255,107,53,0.8)]"
             >
               <Instagram size={24} />
+            </a>
+            <a
+              href="https://t.me/+L6JWeG5YwglmNzY0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:drop-shadow-[0_0_10px_rgba(255,107,53,0.8)]"
+            >
+              <Send size={24} />
             </a>
           </div>
         </div>
