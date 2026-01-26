@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const navLinks = [
+  { href: '/coaching', label: 'Coaching' },
   { href: '/about', label: 'About' },
 ];
 
