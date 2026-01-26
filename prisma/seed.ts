@@ -140,7 +140,7 @@ Phase 3: Full Press
       `.trim(),
       testimonial: null,
       price: 2000,
-      coverImage: '/images/hs-press.jpeg',
+      coverImage: '/images/hs-press.png',
       fileUrl: 'https://xsn5iscg5xc7r5w2.public.blob.vercel-storage.com/ebooks/Handstand_Press_Program_Fixed.pdf',
       slug: 'handstand-press-program',
     },
