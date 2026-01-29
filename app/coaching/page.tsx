@@ -1,3 +1,5 @@
+'use client';
+
 import { Mail } from 'lucide-react';
 
 export default function CoachingPage() {
@@ -8,7 +10,7 @@ export default function CoachingPage() {
           Online <span className="text-primary drop-shadow-[0_0_20px_rgba(255,107,53,0.7)]">Coaching</span>
         </h1>
         <p className="text-center text-muted-foreground mb-12 text-lg">
-          Personalized 3-month training program tailored to your goals
+          Personalized training program and coaching tailored to your personal goals and needs. For any level, female or male.
         </p>
 
         <div className="space-y-8 text-lg text-muted-foreground leading-relaxed">
@@ -19,7 +21,7 @@ export default function CoachingPage() {
               I offer a <span className="text-foreground font-semibold">3-month program</span> split into 3 phases of 4 weeks each. Each phase is custom-built for your goals, current level, and needs.
             </p>
             <p>
-              The program includes everything: warm-ups, preparations, training, and more. Most exercises are shown on video and explained in detail.
+              After each finished training phase a new phase is programmed, based on training progress, performance and communication with LBM.
             </p>
           </div>
 
@@ -27,10 +29,10 @@ export default function CoachingPage() {
           <div className="bg-card border border-border rounded-xl p-6">
             <h2 className="text-2xl font-bold text-foreground mb-4">The Approach</h2>
             <p className="mb-4">
-              We work to build a <span className="text-foreground font-semibold">healthy, mobile, strong, bullet-proof body</span> while working toward your goals.
+              We work to build a <span className="text-foreground font-semibold">healthy, mobile, strong, bullet-proof body</span> while working towards your goals.
             </p>
             <p>
-              Getting healthy, stronger, fixing weak links, injuries, and building a solid foundation comes first. Without a good foundation, we won&apos;t get anywhere. We work realistically, step by step towards your goals in the right way.
+              Getting healthy, fixing weak links, previous/current injuries, and building a solid foundation comes first. Without a good foundation, we won&apos;t get anywhere. We work realistically, step by step towards your goals in the right progressive way.
             </p>
           </div>
 
@@ -41,15 +43,18 @@ export default function CoachingPage() {
               In the first week of each phase, you&apos;ll record your exercises on video. This allows me to see if you&apos;re performing everything correctly and coach you optimally - making program adjustments if needed.
             </p>
             <p>
-              After every month, a progress video is sent in to evaluate what we need to work on in the next phase. We&apos;ll discuss and refine each phase to be better than the last.
+              In the last week of each training phase, a progress video is sent in to evaluate what we need to work on in the next phase. We&apos;ll discuss and refine each phase to be better than the last. This video support can be done throughout the whole training phase - that really depends on the client.
             </p>
           </div>
 
           {/* Support */}
           <div className="bg-card border border-border rounded-xl p-6">
             <h2 className="text-2xl font-bold text-foreground mb-4">Ongoing Support</h2>
+            <p className="mb-4">
+              Throughout the online coaching, we keep in contact as much as possible - the more the better. I answer questions ASAP and check in regularly. Nothing goes unanswered.
+            </p>
             <p>
-              Throughout coaching, we keep in contact as much as possible - the more the better. I answer questions ASAP and check in regularly. Nothing goes unanswered. The more effort you put into communication, the more you&apos;ll get out of this.
+              The more effort you put into communication, the more you&apos;ll get out of it. The coaching is <span className="text-foreground font-semibold">very personal</span> if the client desires - contact is held with WhatsApp communication and/or live video corrections.
             </p>
           </div>
 
@@ -57,7 +62,7 @@ export default function CoachingPage() {
           <div className="bg-card border border-border rounded-xl p-6">
             <h2 className="text-2xl font-bold text-foreground mb-4">Goals I Work With</h2>
             <div className="flex flex-wrap gap-2">
-              {['Hypertrophy', 'Handbalancing', 'Skills', 'Movements', 'Mobility', 'Calisthenics Strength', 'Lifting', 'Getting Healthier'].map((goal) => (
+              {['Calisthenics', 'Street Lifting', 'Hypertrophy', 'Muscle Building', 'Hybrid Training', 'Handbalancing', 'Weightlifting', 'Mobility', 'Getting Healthier'].map((goal) => (
                 <span key={goal} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
                   {goal}
                 </span>
@@ -75,18 +80,26 @@ export default function CoachingPage() {
               &euro;450
             </div>
             <p className="text-foreground mb-4">
-              3 months of coaching, programming & support
+              3 phases of coaching, programming &amp; support
             </p>
-            <p className="text-sm text-muted-foreground">
-              &euro;150 per month &bull; Payment via PayPal or bank transfer
+            <p className="text-sm text-muted-foreground mb-2">
+              (each phase can be slightly longer than 4 weeks)
             </p>
+            <div className="border-t border-border/50 pt-4 mt-4">
+              <p className="text-muted-foreground">
+                Payment per phase: <span className="text-foreground font-semibold">&euro;150</span>
+              </p>
+            </div>
           </div>
 
           {/* CTA */}
           <div className="text-center pt-8">
-            <h3 className="text-2xl font-bold text-foreground mb-4">Ready to Start?</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-4">Ready to Start Training?</h3>
+            <p className="mb-2 text-muted-foreground">
+              Or still have some questions?
+            </p>
             <p className="mb-6 text-muted-foreground">
-              Send me an email with your goals and let&apos;s get started!
+              Send me an email!
             </p>
             <a
               href="mailto:littlebeastmtraining@gmail.com?subject=Online Coaching Inquiry"

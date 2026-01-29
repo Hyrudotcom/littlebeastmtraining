@@ -22,9 +22,9 @@ export default async function HomePage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="text-center py-16 md:py-24 mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold max-w-3xl mx-auto leading-tight">
-          Train with <span className="text-primary">LittleBeastM&apos;s</span> knowledge and years of experience.
+      <div className="text-center py-12 md:py-20 mb-8">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold cursor-default group">
+          <span className="text-primary drop-shadow-[0_0_25px_rgba(255,107,53,0.6)] transition-all duration-300 group-hover:drop-shadow-[0_0_40px_rgba(255,107,53,1)]">Real</span> <span className="transition-all duration-300 group-hover:text-white">Programs.</span> <span className="text-primary drop-shadow-[0_0_25px_rgba(255,107,53,0.6)] transition-all duration-300 group-hover:drop-shadow-[0_0_40px_rgba(255,107,53,1)]">Real</span> <span className="transition-all duration-300 group-hover:text-white">Results.</span>
         </h1>
       </div>
 
@@ -34,13 +34,8 @@ export default async function HomePage() {
         </p>
       ) : (
         <>
-          {/* Bundle Section - First */}
-          <div className="max-w-md mx-auto mb-16">
-            <BundleCard />
-          </div>
-
           {/* Ebooks Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-4xl mx-auto">
             {sortedEbooks.map((ebook) => (
               <EbookCard
                 key={ebook.id}
@@ -51,6 +46,11 @@ export default async function HomePage() {
                 slug={ebook.slug}
               />
             ))}
+          </div>
+
+          {/* Bundle Section - Bottom */}
+          <div className="max-w-4xl mx-auto mt-16">
+            <BundleCard />
           </div>
         </>
       )}

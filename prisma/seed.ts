@@ -23,28 +23,23 @@ async function main() {
       title: 'THE LBM BLUEPRINT',
       author: 'Little Beast M',
       description:
-        "Fuel your performance with this complete nutrition guide designed specifically for athletes. Learn how to meal prep efficiently, optimize your macros for muscle growth and recovery, and never run out of delicious, performance-boosting recipes. Includes 50+ recipes, shopping lists, and meal timing strategies.",
+        "In this book you will learn how to build a well rounded body and mind, by using different styles of training and tools. With this program you will learn how to combine both Calisthenics and Weight training together to build a bulletproof body.",
       tableOfContents: `
-Chapter 1: Nutrition Fundamentals
-- Understanding macronutrients
-- Calorie calculations for athletes
-- Meal timing for performance
+THE LBM BLUEPRINT – 3 MONTH PROGRAM – VERSION 1
 
-Chapter 2: Meal Prep Mastery
-- Kitchen essentials
-- Batch cooking techniques
-- Storage and portion control
+What's Inside:
+• Calisthenics Training
+• Ring Training
+• Barbell and Dumbbell Training
+• Joint Prep
+• Loaded Stretching
+• Dynamic Stretching
+• Mobility Flow
+• Breathing Techniques
+• Meditation
+• And more!
 
-Chapter 3: Recipes
-- High-protein breakfasts (10 recipes)
-- Power lunches (15 recipes)
-- Recovery dinners (15 recipes)
-- Healthy snacks (10 recipes)
-
-Chapter 4: Sample Meal Plans
-- Bulking phase
-- Cutting phase
-- Maintenance phase
+Build a well-rounded body and mind using different styles of training and tools.
       `.trim(),
       testimonial:
         "Finally, a nutrition guide that makes sense for athletes. The recipes are simple and delicious! - Sarah M.",
@@ -57,25 +52,26 @@ Chapter 4: Sample Meal Plans
       title: 'Elite Weighted Dips',
       author: 'Little Beast M',
       description:
-        'Transform your physique with this comprehensive 12-week strength training program. Designed for intermediate to advanced lifters, this program focuses on progressive overload and compound movements to build serious muscle and strength. Includes detailed workout logs, exercise demonstrations, and weekly progression guidelines.',
+        'The Elite Weighted Dips program is specifically designed to help you build strength and achieve new personal records in weighted dips. LittleBeastM was one of the pioneers of bringing heavy dips to the calisthenics world - he raised the bar and showed the training community what\'s possible. Train with LittleBeastM to achieve insane feats of dip strength!',
       tableOfContents: `
-Week 1-4: Foundation Phase
-- Day 1: Lower Body Power
-- Day 2: Upper Body Push
-- Day 3: Active Recovery
-- Day 4: Lower Body Volume
-- Day 5: Upper Body Pull
-- Day 6-7: Rest
+ELITE WEIGHTED DIPS – 4 MONTH PROGRAM
 
-Week 5-8: Hypertrophy Phase
-- Increased volume protocols
-- Superset and dropset techniques
-- Progressive overload tracking
+A program highly specific to increasing performance in weighted dips.
 
-Week 9-12: Peak Phase
-- Strength testing protocols
-- Deload strategies
-- Competition prep guidelines
+4 Distinct Training Phases:
+• Phase 1: Muscle Building
+• Phase 2: Building Speed
+• Phase 3: Volume Training
+• Phase 4: Intensity Peak
+
+What's Included:
+• 3 pushing days per week (easy to incorporate into existing routine)
+• In-depth knowledge and training methods
+• Detailed warm-up routines
+• Shoulder health exercises
+• Every exercise demonstrated and explained via video
+
+After completing all 4 phases and setting new records, you can repeat this incredible program!
       `.trim(),
       testimonial:
         "This program completely changed my approach to training. Gained 15lbs of muscle in 12 weeks! - Jake R.",
@@ -121,22 +117,27 @@ Part 4: Overcoming Obstacles
       title: 'Handstand Press Program',
       author: 'Little Beast M',
       description:
-        'Master the handstand press with this progressive program. From pike press foundations to full straddle and straight body press, this guide covers all the strength, mobility, and technique work needed to achieve this impressive skill.',
+        'The Handstand Press e-book is for those who want to learn and progress towards mastering the straight arm handstand press. A perfect program for those who already can hold a nice freestanding handstand and want to explore more on hands. If a heavyweight like LittleBeastM can do a handstand press, then so can you! Learn with LittleBeastM\'s unique programming and training style!',
       tableOfContents: `
-Phase 1: Foundation
-- Pike press progressions
-- Shoulder strength work
-- Hip flexibility drills
+HANDSTAND PRESS PROGRAM – 3 TRAINING PHASES
 
-Phase 2: Straddle Press
-- Straddle mobility
-- Compression strength
-- Technique cues
+Each phase gets progressively harder with the right volume and intensity.
 
-Phase 3: Full Press
-- Straight body press
-- Programming and frequency
-- Common mistakes to avoid
+What's Included:
+• 3 progressive training phases
+• Upper body and lower body mobility work (same day, same workout)
+• Warm ups, preparations, activations, and joint health
+• Different schedule options
+• Every exercise recorded on video and explained
+
+Focus Areas:
+• Handstand strength
+• Core strength
+• Shoulder strength
+• Straight arm strength
+• Mobility for smoother presses
+
+LittleBeastM's smart programming combines strength and mobility training for optimal progress.
       `.trim(),
       testimonial: null,
       price: 2000,

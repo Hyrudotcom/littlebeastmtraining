@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { prisma } from '@/lib/prisma';
 import { v4 as uuidv4 } from 'uuid';
-import { sendPurchaseConfirmation } from '@/lib/email';
+import { sendPurchaseConfirmation, sendBundleConfirmation } from '@/lib/email';
 import Stripe from 'stripe';
 
 export async function POST(request: NextRequest) {
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
           where: { id: { in: ebookIds } },
         });
 
-        const downloadUrls: string[] = [];
+        const downloadData: { title: string; url: string; slug: string }[] = [];
 
         for (const ebook of ebooks) {
           const existingOrder = await prisma.order.findFirst({
@@ -86,14 +86,17 @@ export async function POST(request: NextRequest) {
             },
           });
 
-          downloadUrls.push(`${baseUrl}/download/${downloadToken}`);
+          downloadData.push({
+            title: ebook.title,
+            url: `${baseUrl}/download/${downloadToken}`,
+            slug: ebook.slug,
+          });
         }
 
-        if (session.customer_email && downloadUrls.length > 0) {
-          await sendPurchaseConfirmation({
+        if (session.customer_email && downloadData.length > 0) {
+          await sendBundleConfirmation({
             to: session.customer_email,
-            ebookTitle: 'Complete LBM Bundle',
-            downloadUrl: downloadUrls.join('\n'),
+            downloadUrls: downloadData,
           });
         }
 
@@ -155,6 +158,7 @@ export async function POST(request: NextRequest) {
             to: session.customer_email,
             ebookTitle: ebook.title,
             downloadUrl,
+            ebookSlug: ebook.slug,
           });
         }
 

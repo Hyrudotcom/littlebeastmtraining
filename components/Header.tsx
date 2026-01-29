@@ -4,7 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const navLinks = [
+  { href: '/', label: 'Training Programs' },
   { href: '/coaching', label: 'Coaching' },
+  { href: '/video-library', label: 'Video Library' },
   { href: '/about', label: 'About' },
 ];
 
@@ -22,23 +24,18 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="group flex items-center gap-4 text-2xl font-bold tracking-tight uppercase"
+            className="group flex items-center gap-3"
           >
-            <div className="relative">
-              {/* Logo glow effect on hover */}
-              <div className="absolute -inset-3 bg-primary/0 group-hover:bg-primary/50 rounded-xl blur-2xl transition-all duration-500" />
-              <Image
-                src="/logo.svg"
-                alt="LBM Logo"
-                width={48}
-                height={48}
-                className="relative rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
-              />
-            </div>
-            <span className="hidden sm:block">
-              <span className="text-foreground transition-colors duration-300 group-hover:text-white">Little Beast</span>{' '}
-              <span className="text-primary transition-all duration-300 drop-shadow-[0_0_12px_rgba(255,107,53,0.7)] group-hover:drop-shadow-[0_0_25px_rgba(255,107,53,1)]">M</span>{' '}
-              <span className="text-foreground transition-colors duration-300 group-hover:text-white">Training</span>
+            <Image
+              src="/images/lbm-logo.png"
+              alt="LBM Training"
+              width={80}
+              height={80}
+              className="rounded-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <span className="hidden sm:block text-xl font-bold tracking-tight uppercase">
+              <span className="text-foreground">LBM</span>{' '}
+              <span className="text-primary">Training</span>
             </span>
           </Link>
 
@@ -48,7 +45,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative px-5 py-3 text-lg font-semibold text-white transition-all duration-300 hover:text-white group"
+                className="relative px-4 py-2 text-base md:text-lg font-semibold text-white transition-all duration-300 hover:text-white group"
               >
                 {/* Hover background glow */}
                 <span className="absolute inset-0 rounded-lg bg-primary/0 group-hover:bg-primary/25 transition-all duration-300 group-hover:shadow-[0_0_25px_rgba(255,107,53,0.5)]" />
