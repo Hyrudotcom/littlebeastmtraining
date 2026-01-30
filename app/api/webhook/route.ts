@@ -38,6 +38,8 @@ export async function POST(request: NextRequest) {
     try {
       const isBundle = session.metadata?.isBundle === 'true';
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      // Get customer email - check both places as Stripe can put it in either
+      const customerEmail = session.customer_email || session.customer_details?.email || '';
 
       if (isBundle) {
         // Handle bundle purchase
@@ -72,7 +74,7 @@ export async function POST(request: NextRequest) {
 
           await prisma.order.create({
             data: {
-              email: session.customer_email || '',
+              email: customerEmail,
               stripeSessionId: `${session.id}_${ebook.id}`,
               status: 'completed',
               amount: Math.floor((session.amount_total || 5000) / ebooks.length),
@@ -93,9 +95,9 @@ export async function POST(request: NextRequest) {
           });
         }
 
-        if (session.customer_email && downloadData.length > 0) {
+        if (customerEmail && downloadData.length > 0) {
           await sendBundleConfirmation({
-            to: session.customer_email,
+            to: customerEmail,
             downloadUrls: downloadData,
           });
         }
@@ -133,7 +135,7 @@ export async function POST(request: NextRequest) {
 
         const order = await prisma.order.create({
           data: {
-            email: session.customer_email || '',
+            email: customerEmail,
             stripeSessionId: session.id,
             status: 'completed',
             amount: session.amount_total || ebook.price,
@@ -153,9 +155,9 @@ export async function POST(request: NextRequest) {
 
         const downloadUrl = `${baseUrl}/download/${downloadToken}`;
 
-        if (session.customer_email) {
+        if (customerEmail) {
           await sendPurchaseConfirmation({
-            to: session.customer_email,
+            to: customerEmail,
             ebookTitle: ebook.title,
             downloadUrl,
             ebookSlug: ebook.slug,
